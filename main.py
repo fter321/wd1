@@ -65,14 +65,38 @@ while run:
                 numeral += e.unicode
             elif e.key == pygame.K_BACKSPACE:
                 numeral = numeral[:-1]
+            elif e.key == pygame.K_RETURN and numeral:
+                if int(numeral) > 100:
+                    dialogs('', OUTSIDE_BG, 'Вы ошиблись')
+                elif int(numeral) > 100:
+                    dialogs('', OUTSIDE_BG, 'Число меньше') 
+                elif int(numeral) > 100:
+                    dialogs('', OUTSIDE_BG, 'Число больше')
+                if move == 1:
+                    if int(numeral) == num:
+                        dialogs(f'Это число {numeral}', dialog_cat_pos, 'Кот, ты победил')
+                        block = 1
+                    else:
+                        dialogs('Дог, твой ход', dialog_cat_pos, 'Продолжаем')
+                else:
+                    dialogs('кот, твой ход', dialog_dog_pos, 'Продолжаем')     
+            elif move == 2:
+                if int(numeral) == num:
+                    dialogs(f'Это число {numeral}', dialog_dog_pos, 'Дог, ты победил')
+                # move +=1
+                # if move > 2:
+                #   move = 1        
+                numeral = ''
+                move = 1 if move >= 2 else + 1
 
-    screen.blit(bg, bg_rect)
-    screen.blit(cat, cat_rect)
-    screen.blit(dog, dog_rect)
-    screen.blit(owl, owl_rect)
-    screen.blit(font_box, font_rect)
-    font_box.fill(SILVER)
-    font_box.blit(font.render(numeral, True, BLACK), (10, 0))
+    if block == 0:
+        screen.blit(bg, bg_rect)
+        screen.blit(cat, cat_rect)
+        screen.blit(dog, dog_rect)
+        screen.blit(owl, owl_rect)
+        screen.blit(font_box, font_rect)
+        font_box.fill(SILVER)
+        font_box.blit(font.render(numeral, True, BLACK), (10, 0))
     pygame.display.update()
 
     if start == 1:
