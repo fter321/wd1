@@ -104,3 +104,4 @@ while run:
         dialogs('', OUTSIDE_BG, 'от 0 до 100')
         dialogs('Кот, твой ход', dialog_dog_pos, 'Отгадайте его')
         start = 0
+cat = pygame.transform.scale(cat.get_windth) // 2, cat
